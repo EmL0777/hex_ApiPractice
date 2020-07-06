@@ -19,14 +19,35 @@ let product = {
         const product = {
           id: item.id,
           title: item.title,
-          content: item.content
+          content: item.content,
+          imgUrl: item.imageUrl[0]
         };
         vm.data.products.push(product);
       });
+
+      vm.render();
     })
     .catch(function(err){
       console.log('錯誤', err);
     });
+  },
+
+  render() {
+    const app = document.querySelector('#app');
+    const products = this.data.products;
+    let str = '';
+
+    products.forEach((product) => {
+      str += `<div class="card" id="${product.id}">
+      <img src="${product.imgUrl}" class="card-img-top" alt="img title">
+      <div class="card-body">
+        <h5 class="card-title">${product.title}</h5>
+        <p class="card-text">${product.content}</p>
+      </div>
+      </div>`
+    });
+
+    app.innerHTML = str;
   }
 };
 
