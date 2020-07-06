@@ -20,7 +20,8 @@ let product = {
           id: item.id,
           title: item.title,
           content: item.content,
-          imgUrl: item.imageUrl[0]
+          imgUrl: item.imageUrl[0],
+          price: item.price
         };
         vm.data.products.push(product);
       });
@@ -44,6 +45,10 @@ let product = {
         <h5 class="card-title">${product.title}</h5>
         <p class="card-text">${product.content}</p>
       </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">原價：${product.price} 美元</li>
+          <li class="list-group-item">特價：${product.price} 美元</li>
+        </ul>
       </div>`
     });
 
